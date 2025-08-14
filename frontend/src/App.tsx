@@ -1,29 +1,90 @@
 import { useState } from "react"
 
+// function App() {
+//   const [counter, setCounter] = useState(1)
+
+//   const handleClick = () => {
+//     setCounter(counter + 1)
+//     console.log(counter)
+//   }
+
+//   return (
+//     <div>
+//       <button onClick={handleClick}>Increase count</button>
+//       {counter}
+//     </div>
+//   )
+// }
+
 function App() {
-  const [counter, setCounter] = useState(1)
-  const [counter2, setCounter2] = useState(1)
-  const [counter3, setCounter3] = useState(1)
-  const [counter4, setCounter4] = useState(1)
-  const [counter5, setCounter5] = useState(1)
-  const [counter6, setCounter6] = useState(1)
+
+  const [sandwiches, setSandwiches] = useState([
+    { name: 'Brown', sauce: 'mayo', ingredient: 'tomato' }
+  ])
+
+  const handleCreate = () => {
+    // sandwiches.push({ name: 'Brown', sauce: 'mayo', ingredient: 'tomato' })
+
+    // const newSandwiches = sandwiches;
+    // newSandwiches.push({ name: 'Brown', sauce: 'mayo', ingredient: 'tomato' })
+    // setSandwiches(newSandwiches)
+
+    // setSandwiches(sandwiches.concat({ name: 'Brown', sauce: 'mayo', ingredient: 'tomato' }))
+    console.log(sandwiches)
+
+    setSandwiches((prev) => prev.concat({ name: 'Brown', sauce: 'mayo', ingredient: 'tomato' }))
+  }
 
   return (
-    <div style={{ padding: 10 }}>
-      <button onClick={() => setCounter(v => v + 1)}>Increase count</button>
-      <button onClick={() => setCounter2(v => v + 1)}>Increase count</button>
-      <button onClick={() => setCounter3(v => v + 1)}>Increase count</button>
-      <button onClick={() => setCounter4(v => v + 1)}>Increase count</button>
-      <button onClick={() => setCounter5(v => v + 1)}>Increase count</button>
-      <button onClick={() => setCounter6(v => v + 1)}>Increase count</button>
-      <p>{counter}</p>
-      <p>{counter2}</p>
-      <p>{counter3}</p>
-      <p>{counter4}</p>
-      <p>{counter5}</p>
-      <p>{counter6}</p>
+    <div>
+      <button onClick={handleCreate}>Create sandwich</button>
+
+      {sandwiches.map(el => {
+        return (
+          <div style={{ border: '1px solid black', margin: 10, padding: 10 }}>
+            <p>Bread: {el.name}</p>
+            <p>Sauce: {el.sauce}</p>
+            <p>Ingredient: {el.ingredient}</p>
+          </div>
+        )
+      })}
+
+      {/* <div style={{ border: '1px solid black', margin: 10, padding: 10 }}>
+        <p>Bread: {sandwiches[1].name}</p>
+        <p>Sauce: {sandwiches[1].sauce}</p>
+        <p>Ingredient: {sandwiches[1].ingredient}</p>
+      </div> */}
     </div>
   )
 }
+
+
+// function Sandwich() {
+
+//   return (
+//     <div style={{ padding: 10 }}>
+//       <input type="text" onChange={handleInput} />
+//       <p>Your name is: {name}</p>
+//     </div>
+//   )
+// }
+
+// function App() {
+//   const [name, setName] = useState('')
+//   // var name = ''
+
+//   const handleInput = (el) => {
+//     console.log(el.target.value)
+//     // name = el.target.value
+//     setName(el.target.value)
+//   }
+
+//   return (
+//     <div style={{ padding: 10 }}>
+//       <input type="text" onChange={handleInput} />
+//       <p>Your name is: {name}</p>
+//     </div>
+//   )
+// }
 
 export default App
